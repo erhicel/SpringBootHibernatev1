@@ -96,8 +96,8 @@ public class MappingServiceImpl implements MappingService {
 	@Override
 	public Mapping updateMapping(Mapping mapping) {
 
-		if (!mappingRepository.findById(mapping.getIdMapping()).isPresent())
-			throw new MappingNotFoundException(mapping.getIdMapping());
+		if (!mappingRepository.findById(mapping.getMappingId()).isPresent())
+			throw new MappingNotFoundException(mapping.getMappingId());
 
 		return mappingRepository.save(mapping);
 

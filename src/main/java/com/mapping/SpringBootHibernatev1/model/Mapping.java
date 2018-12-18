@@ -12,13 +12,16 @@ import javax.validation.constraints.Size;
 
 import org.springframework.hateoas.ResourceSupport;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Mapping extends ResourceSupport {
 
 	@Id
 	@Column(name = "ID")
+	@JsonProperty("id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long	idMapping;
+	private Long	mappingId;
 
 	@NotNull
 	@Valid
@@ -48,20 +51,20 @@ public class Mapping extends ResourceSupport {
 
 	public Mapping(Long id, Long mappingTypeId, Long providerId, String value, String valueDescription) {
 		super();
-		this.idMapping = id;
+		this.mappingId = id;
 		this.mappingTypeId = mappingTypeId;
 		this.providerId = providerId;
 		this.value = value;
 		this.valueDescription = valueDescription;
 	}
 
-	public Long getIdMapping() {
-		return idMapping;
+	public Long getMappingId() {
+		return mappingId;
 	}
 
 	// @JsonIgnore se utiliza si no se quiere setear este valor
-	public void setId(Long id) {
-		this.idMapping = id;
+	public void setMappingId(Long id) {
+		this.mappingId = id;
 	}
 
 	public Long getMappingTypeId() {

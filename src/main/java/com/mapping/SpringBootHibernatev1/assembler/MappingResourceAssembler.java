@@ -16,7 +16,7 @@ public class MappingResourceAssembler implements ResourceAssembler<Mapping, Reso
 	@Override
 	public Resource<Mapping> toResource(Mapping mapping) {
 
-		return new Resource<>(mapping, linkTo(methodOn(MappingRestController.class).getMappingById(mapping.getIdMapping())).withSelfRel());
+		return new Resource<>(mapping, linkTo(methodOn(MappingRestController.class).getMappingById(mapping.getMappingId())).withSelfRel());
 	}
 
 }
