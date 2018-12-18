@@ -28,6 +28,9 @@ import com.mapping.SpringBootHibernatev1.assembler.MappingResourceAssembler;
 import com.mapping.SpringBootHibernatev1.model.Mapping;
 import com.mapping.SpringBootHibernatev1.service.MappingService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class MappingRestController {
 
@@ -51,6 +54,8 @@ public class MappingRestController {
 			mappingsResource.add(assembler.toResource(mapping));
 		}
 		Link link = linkTo(methodOn(MappingRestController.class).getMappings(providerId)).withSelfRel().withType("GET");
+		log.info("Found Mappings");
+		log.info(mappingsResource.get(0).toString());
 		return ResponseEntity.ok(new Resources<>(mappingsResource, link));
 	}
 
@@ -81,7 +86,7 @@ public class MappingRestController {
 	@PostMapping(value = "/api/mappings")
 	public ResponseEntity<Object> addMapping(@Valid @RequestBody Mapping mapping) {
 		Mapping response = mappingService.addMapping(mapping);
-		System.out.println("Mapping Saved Successfully");
+		log.info("Mapping Saved Successfully");
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
 		return ResponseEntity.created(uri).body(assembler.toResource(response));
 
@@ -103,7 +108,7 @@ public class MappingRestController {
 	public ResponseEntity<Object> deleteMapping(@PathVariable("mappingId") Long mappingId) {
 
 		mappingService.deleteMapping(mappingId);
-		System.out.println("Employee Deleted Successfully");
+		log.info("Employee Deleted Successfully");
 		return ResponseEntity.noContent().build();
 
 	}

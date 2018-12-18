@@ -227,7 +227,7 @@ public class MappingRestControllerTest {
 		mockMvc.perform(MockMvcRequestBuilders.put("/api/mappings/687382").contentType(MediaType.APPLICATION_JSON).content(
 				new ObjectMapper().writeValueAsString(mockMapping))).andExpect(status().isOk()).andExpect(
 						jsonPath("id").value(mockMapping.getMappingId())).andExpect(jsonPath("mappingTypeId").value(mockMapping.getMappingTypeId())).andExpect(
-								jsonPath("providerID").value(mockMapping.getProviderID())).andExpect(jsonPath("value").value(mockMapping.getValue())).andExpect(
+								jsonPath("providerID").value(mockMapping.getProviderId())).andExpect(jsonPath("value").value(mockMapping.getValue())).andExpect(
 										jsonPath("valueDescription").value(mockMapping.getValueDescription())).andExpect(
 												jsonPath("_links.self.href").value("http://localhost/api/mappings/687382"))
 

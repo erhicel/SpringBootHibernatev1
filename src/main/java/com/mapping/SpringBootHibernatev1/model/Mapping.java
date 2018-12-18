@@ -14,7 +14,18 @@ import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = "mappingTypeId")
+@Slf4j
 public class Mapping extends ResourceSupport {
 
 	@Id
@@ -47,8 +58,6 @@ public class Mapping extends ResourceSupport {
 	@Column(name = "VALUE_DESCRIPTION")
 	private String	valueDescription;
 
-	public Mapping() {}
-
 	public Mapping(Long id, Long mappingTypeId, Long providerId, String value, String valueDescription) {
 		super();
 		this.mappingId = id;
@@ -58,45 +67,45 @@ public class Mapping extends ResourceSupport {
 		this.valueDescription = valueDescription;
 	}
 
-	public Long getMappingId() {
-		return mappingId;
-	}
-
-	// @JsonIgnore se utiliza si no se quiere setear este valor
-	public void setMappingId(Long id) {
-		this.mappingId = id;
-	}
-
-	public Long getMappingTypeId() {
-		return mappingTypeId;
-	}
-
-	public void setMappingTypeId(Long mappingTypeId) {
-		this.mappingTypeId = mappingTypeId;
-	}
-
-	public Long getProviderID() {
-		return providerId;
-	}
-
-	public void setProviderID(Long providerID) {
-		this.providerId = providerID;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public String getValueDescription() {
-		return valueDescription;
-	}
-
-	public void setValueDescription(String valueDescription) {
-		this.valueDescription = valueDescription;
-	}
+	// public Long getMappingId() {
+	// return mappingId;
+	// }
+	//
+	// // @JsonIgnore se utiliza si no se quiere setear este valor
+	// public void setMappingId(Long id) {
+	// this.mappingId = id;
+	// }
+	//
+	// public Long getMappingTypeId() {
+	// return mappingTypeId;
+	// }
+	//
+	// public void setMappingTypeId(Long mappingTypeId) {
+	// this.mappingTypeId = mappingTypeId;
+	// }
+	//
+	// public Long getProviderID() {
+	// return providerId;
+	// }
+	//
+	// public void setProviderID(Long providerID) {
+	// this.providerId = providerID;
+	// }
+	//
+	// public String getValue() {
+	// return value;
+	// }
+	//
+	// public void setValue(String value) {
+	// this.value = value;
+	// }
+	//
+	// public String getValueDescription() {
+	// return valueDescription;
+	// }
+	//
+	// public void setValueDescription(String valueDescription) {
+	// this.valueDescription = valueDescription;
+	// }
 
 }
